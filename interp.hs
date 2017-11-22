@@ -39,8 +39,8 @@ dump msg = ioError (userError (msg ++ info))
 -- | Command-line parsing
 compilerOpts :: [String] -> IO Opts
 compilerOpts argv = case getOpt Permute options argv of
-        (opts, garbage, []) ->  do record <- (buildOpts opts)
-                                   case (source record) of 
+        (opts, garbage, []) ->  do record <- buildOpts opts
+                                   case source record of 
                                        Nothing -> dump "-c option, which specifies the source file, is mandatory\n"
                                        (Just _)-> if (null garbage) then 
                                                       return record
