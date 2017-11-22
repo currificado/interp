@@ -47,8 +47,8 @@ pSat p = do c <- item
 pSym :: Char -> Parser Char
 pSym c = pSat (== c)
 
--- | recursión
--- | cero o más veces p
+-- | recursiÃ³n
+-- | cero o mÃ¡s veces p
 
 pList :: Parser a -> Parser [a]
 pList p = do a <- p
@@ -57,7 +57,7 @@ pList p = do a <- p
           <|>
           return [] 
           
--- | una o más veces p
+-- | una o mÃ¡s veces p
 
 pList1 :: Parser a -> Parser [a]
 pList1 p = do a <- p
