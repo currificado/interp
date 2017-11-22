@@ -2,7 +2,6 @@ import Data.List (intercalate)
 import Data.Maybe (fromJust)
 import Control.Monad (when)
 import System.Console.GetOpt
-import System.IO
 import System.Environment (getArgs)
 
 import Interpreter
@@ -55,12 +54,10 @@ main = do
     argv <- getArgs
     opts <- compilerOpts argv
     let filename = fromJust (source opts)
-    inh <- openFile filename ReadMode
-    str <- hGetContents inh
+    str <- readFile filename
     let rs = filter (null . snd) (runP parser str)
     case rs of
          [] -> error ("Could not parse `" ++ filename ++ "'")
          (r:_) -> do let expr = fst r
                      when (verbose opts) $ putStrLn (show  expr)
                      putStrLn $ show (eval expr)
-    hClose inh
