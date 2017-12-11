@@ -6,7 +6,6 @@ import Control.Monad.Reader
 import Control.Monad.Trans.Class
 import Data.Char (isAsciiLower, isDigit, isSpace,
                   digitToInt)
-import Data.Maybe (fromMaybe)
 
 -- | Código mon-parsing.hs del curso
 import Parser
