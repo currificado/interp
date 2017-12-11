@@ -59,5 +59,5 @@ main = do
     case rs of
          [] -> error ("Could not parse `" ++ filename ++ "'")
          (r:_) -> do let expr = fst r
-                     when (verbose opts) $ putStrLn (show  expr)
+                     when (verbose opts) $ putStrLn (show expr)
                      putStrLn $ show (eval expr)
